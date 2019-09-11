@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
-import {axios} from 'axios';
+import axios from 'axios';
 
 export default class App extends React.Component {
 
@@ -14,7 +14,8 @@ export default class App extends React.Component {
     }
 
     loadWallpapers(){
-       axios.get('https://api.unsplash.com/photos/random?count=30&client_id=76529839e09216326738271cb5d6472596d822a488d9581985863f38cb2a3200').then(function(response){
+       axios.get('https://api.unsplash.com/photos/random?count=30&client_id=76529839e09216326738271cb5d6472596d822a488d9581985863f38cb2a3200')
+       .then(function(response){
         console.log(response.data);
         this.setState({images:response.data, isLoading:false})
        }) 
@@ -28,7 +29,6 @@ export default class App extends React.Component {
     componentDidMount(){
         this.loadWallpapers()
     }
-
 
     render(){
         return  this.state.isLoading? ( 
